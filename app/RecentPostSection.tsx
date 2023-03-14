@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import PostCard from '~/components/PostCard'
 import { Post } from '~/typing'
 
@@ -38,11 +39,19 @@ export default function RecentPostSection({
 }) {
   return (
     <section className={className}>
-      <div className='flex items-center gap-2'>
-        <div className='h-1.5 w-3 rounded-full bg-slate-600' />
-        <h2>
-          My <span className='text-sky-400'>recent posts</span>
-        </h2>
+      <div className='flex justify-between'>
+        <div className='flex items-center gap-2'>
+          <div className='h-1.5 w-3 rounded-full bg-slate-600' />
+          <h2>
+            My <span className='text-sky-400'>recent posts</span>
+          </h2>
+        </div>
+        <Link
+          href='/posts'
+          className='text-sm text-slate-500 transition hover:text-slate-200'
+        >
+          Show more
+        </Link>
       </div>
 
       <ul className='mt-10 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3'>
