@@ -24,7 +24,7 @@ export default function Header({ className }: { className?: string }) {
   return (
     <header className={`${className}`}>
       <nav>
-        <ul className='flex items-center justify-end gap-6'>
+        <ul className='flex items-center justify-center gap-6 lg:justify-end '>
           {menuItems.map((item, i) => (
             <li key={i}>
               <Link

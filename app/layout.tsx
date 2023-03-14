@@ -32,7 +32,7 @@ export default function RootLayout({
         <div className='container mx-auto px-4 py-6 md:px-8 xl:px-12'>
           <Header />
           {children}
-          <Footer className='mt-36' />
+          <Footer className='mt-48' />
         </div>
       </body>
     </html>
