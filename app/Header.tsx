@@ -14,7 +14,7 @@ const menuItems = [
   },
   {
     name: 'Blog',
-    href: '/blog',
+    href: '/posts',
   },
 ]
 
@@ -29,7 +29,11 @@ export default function Header({ className }: { className?: string }) {
             <li key={i}>
               <Link
                 href={item.href}
-                className={`${pathname === item.href ? 'text-sky-400' : ''}`}
+                className={`${
+                  pathname === item.href
+                    ? 'text-sky-400'
+                    : 'hover:text-slate-200'
+                }`}
               >
                 {item.name}
               </Link>
