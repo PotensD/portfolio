@@ -31,7 +31,9 @@ function LeftColumn() {
             miss a post! Be the first to know about new articles, special
             offers, and exclusive content.
           </p>
-          <SubscriptionNewsletterForm />
+          <div className='flex justify-center lg:block lg:justify-start'>
+            <SubscriptionNewsletterForm className='max-w-md' />
+          </div>
         </div>
       </div>
     </div>
