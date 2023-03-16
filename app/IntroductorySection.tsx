@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import VerticalLinks from '~/components/VerticalLinks'
 import CircleArrow from '~/icons/CircleArrow'
 import LongArrow from '~/icons/LongArrow'
 import SolidEnvelope from '~/icons/SolidEnvelope'
@@ -96,19 +97,7 @@ function LeftColumn() {
 function RightColumn() {
   return (
     <div className='col-span-4 hidden flex-col items-end lg:flex'>
-      <div className='-mr-2 flex flex-col items-center gap-5'>
-        <div className='h-36 w-[1px] rounded-full bg-slate-500' />
-        <a href={links.TWITTER} target='_blank'>
-          <SquareTwitter className='h-4 w-auto text-slate-500 transition hover:scale-125 hover:text-slate-200' />
-        </a>
-        <a href={links.GITHUB} target='_blank'>
-          <SquareGithub className='h-4 w-auto text-slate-500 transition hover:scale-125 hover:text-slate-200' />
-        </a>
-        <a href={links.EMAIL} target='_blank'>
-          <SolidEnvelope className='h-[1.2rem] w-auto text-slate-500 transition hover:scale-125 hover:text-slate-200' />
-        </a>
-        <div className='h-28 w-[1px] rounded-full bg-slate-500' />
-      </div>
+      <VerticalLinks className='-mr-2' />
     </div>
   )
 }

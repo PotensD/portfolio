@@ -2,7 +2,7 @@ import Link from 'next/link'
 import PostCard from '~/components/PostCard'
 import { Post } from '~/typing'
 
-const posts: Post[] = [
+export const posts: Post[] = [
   {
     slug: 'lorem-ipsum-dolor-sit-amet',
     title: 'Lorem ipsum dolor sit amet',
