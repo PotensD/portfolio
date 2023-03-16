@@ -39,7 +39,7 @@ function Posts() {
   return (
     <ul className='mt-24 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3'>
       {posts.map((post) => (
-        <li>
+        <li key={post.slug}>
           <PostCard {...post} />
         </li>
       ))}
