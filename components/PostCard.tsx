@@ -21,7 +21,7 @@ export default function PostCard({
 }: PostCardProps) {
   return (
     <div className={`space-y-3 ${className}`}>
-      <Link href={`posts/${slug}`} className='block'>
+      <Link href={`/posts/${slug}`} className='block'>
         <Image
           src={thumbnail}
           alt='Thumbnail'
@@ -30,11 +30,11 @@ export default function PostCard({
           className='aspect-[4/3] !w-full rounded'
         />
       </Link>
-      <Link href={`posts/${slug}`} className='block'>
+      <Link href={`/posts/${slug}`} className='block'>
         <h3 className='text-base font-medium'>{title}</h3>
       </Link>
       <div>
-        <Link href={`posts/${slug}`} className='block'>
+        <Link href={`/posts/${slug}`} className='block'>
           <p className='mt-2 text-sm text-gray-500'>{description}</p>
         </Link>
         <div className='mt-2 flex gap-4'>

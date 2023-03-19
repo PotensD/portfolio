@@ -8,15 +8,15 @@ const menuItems = [
     name: 'Home',
     href: '/',
   },
-  {
-    name: 'My resume',
-    href: '/my-resume',
-  },
+  // {
+  //   name: 'My resume',
+  //   href: '/my-resume',
+  // },
   {
     name: 'Blog',
     href: '/posts',
   },
-]
+] as const
 
 export default function Header({ className }: { className?: string }) {
   const pathname = usePathname()
