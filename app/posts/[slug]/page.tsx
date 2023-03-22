@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { format } from 'date-fns'
 import { allPosts } from '~/.contentlayer/generated'
 import Tag from '~/components/Tag'
 import Mdx from '~/components/Mdx'
@@ -18,7 +19,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
     notFound()
   }
 
-  const { tags, title, thumbnail, body } = post
+  const { tags, title, thumbnail, body, publishedOn } = post
   const { code } = body
 
   return (
@@ -30,7 +31,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
           </h1>
           <div className='mt-3'>
             <span className='ml-[0.16rem] text-sm font-bold'>
-              March 13th, 2023
+              {format(new Date(publishedOn), 'MMMM dd, yyyy')}
             </span>
           </div>
         </div>
