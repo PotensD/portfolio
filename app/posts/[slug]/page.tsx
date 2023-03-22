@@ -23,9 +23,9 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
 
   return (
     <main className='pt-16'>
-      <div className='grid grid-cols-12 justify-between'>
-        <div className='col-span-7 pr-3 pb-3'>
-          <h1 className='text-center text-7xl font-bold text-slate-200 lg:text-left'>
+      <div className='flex grid-cols-12 flex-col-reverse justify-between gap-4 lg:grid'>
+        <div className='col-span-7 pb-3'>
+          <h1 className='text-5xl font-bold text-slate-200 lg:text-left'>
             {title}
           </h1>
           <div className='mt-3'>
@@ -41,13 +41,13 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
               alt='Thumbnail'
               width={400}
               height={300}
-              className='aspect-[4/3] !w-full rounded'
+              className='aspect-[4/3] !w-full rounded-2xl'
             />
           </div>
         </div>
       </div>
 
-      <div className='-mt-20'>
+      <div className='mt-8 lg:-mt-20'>
         <div className='mb-1 flex gap-4'>
           {tags.map((tag, i) => (
             <div key={tag}>
@@ -60,7 +60,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
       </div>
 
       <div className='mt-32 flex justify-center'>
-        <Mdx className='max-w-4xl' code={code} />
+        <Mdx className='max-w-[100%] lg:max-w-4xl' code={code} />
       </div>
     </main>
   )
