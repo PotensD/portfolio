@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { allPosts } from '~/.contentlayer/generated'
-import ColoredTag from '~/components/ColoredTag'
+import Tag from '~/components/Tag'
 import Mdx from '~/components/Mdx'
 
 type PostDetailPageProps = {
@@ -51,7 +51,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
         <div className='mb-1 flex gap-4'>
           {tags.map((tag, i) => (
             <div key={tag}>
-              <ColoredTag tag={tag} />
+              <Tag tag={tag} />
               {i < tags.length - 1 && <span className='ml-4'>&middot;</span>}
             </div>
           ))}

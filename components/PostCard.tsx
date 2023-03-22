@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Post } from '~/.contentlayer/generated'
-import ColoredTag from './ColoredTag'
+import Tag from './Tag'
 
 type PostCardProps = {
   className?: string
@@ -36,7 +36,7 @@ export default function PostCard({
         <div className='mt-2 flex gap-4'>
           {tags.map((tag, i) => (
             <div key={tag}>
-              <ColoredTag tag={tag} />
+              <Tag tag={tag} />
               {i < tags.length - 1 && <span className='ml-4'>&middot;</span>}
             </div>
           ))}
