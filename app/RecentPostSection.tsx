@@ -1,42 +1,17 @@
 import Link from 'next/link'
+import { allPosts } from '~/.contentlayer/generated'
 import PostCard from '~/components/PostCard'
-import { Post } from '~/typing'
-
-export const posts: Post[] = [
-  {
-    slug: 'lorem-ipsum-dolor-sit-amet',
-    title: 'Lorem ipsum dolor sit amet',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    publishedDate: '2021-01-01',
-    thumbnail: '/images/thumb-demo-post-1.avif',
-    tags: ['Laravel', 'Rust', 'WebDev'],
-  },
-  {
-    slug: 'consectetur-adipiscing-elit',
-    title: 'Consectetur adipiscing elit',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    publishedDate: '2021-01-01',
-    thumbnail: '/images/thumb-demo-post-2.avif',
-    tags: ['Laravel', 'Rust', 'WebDev'],
-  },
-  {
-    slug: 'sed-do-eiusmod-tempor',
-    title: 'Sed do eiusmod tempor',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    publishedDate: '2021-01-01',
-    thumbnail: '/images/thumb-demo-post-3.jpg',
-    tags: ['Laravel', 'Rust', 'WebDev'],
-  },
-]
 
 export default function RecentPostSection({
   className,
 }: {
   className?: string
 }) {
+  // sort on publishedOn
+  const posts = allPosts.sort((p1, p2) =>
+    new Date(p1.publishedOn) > new Date(p2.publishedOn) ? -1 : 1
+  )
+
   return (
     <section className={className}>
       <div className='flex justify-between'>
