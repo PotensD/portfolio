@@ -1,5 +1,5 @@
+import { allPosts } from '~/.contentlayer/generated'
 import PostCard from '~/components/PostCard'
-import { posts } from '../RecentPostSection'
 
 export default function PostsSection({ className }: { className?: string }) {
   return (
@@ -36,6 +36,10 @@ function Tags() {
 }
 
 function Posts() {
+  const posts = allPosts.sort((p1, p2) =>
+    new Date(p1.publishedOn) > new Date(p2.publishedOn) ? -1 : 1
+  )
+
   return (
     <ul className='mt-16 grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3'>
       {posts.map((post) => (

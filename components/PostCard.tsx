@@ -1,22 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Post } from '~/.contentlayer/generated'
 import ColoredTag from './ColoredTag'
 
 type PostCardProps = {
   className?: string
-  slug: string
-  thumbnail: string
-  title: string
-  description: string
-  tags: string[]
-}
+} & Post
 
 export default function PostCard({
   className,
   slug,
   thumbnail,
   title,
-  description,
+  summary,
   tags,
 }: PostCardProps) {
   return (
@@ -35,7 +31,7 @@ export default function PostCard({
       </Link>
       <div>
         <Link href={`/posts/${slug}`} className='block'>
-          <p className='mt-2 text-sm text-gray-500'>{description}</p>
+          <p className='mt-2 text-sm text-gray-500'>{summary}</p>
         </Link>
         <div className='mt-2 flex gap-4'>
           {tags.map((tag, i) => (
