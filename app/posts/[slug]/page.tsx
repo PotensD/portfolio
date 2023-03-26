@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 import { allPosts } from '~/.contentlayer/generated'
 import Tag from '~/components/Tag'
 import Mdx from '~/components/Mdx'
+import { Metadata } from 'next'
 
 type PostDetailPageProps = {
   params: {
@@ -65,4 +66,29 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
       </div>
     </main>
   )
+}
+
+export function generateMetadata({
+  params,
+}: PostDetailPageProps): Metadata | undefined {
+  const { slug } = params
+  const post = allPosts.filter((post) => post.slug === slug)[0]
+  if (!post) return
+
+  return {
+    title: post.title,
+    description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      publishedTime: post.publishedOn,
+      images: [
+        {
+          url: post.thumbnail,
+        },
+      ],
+      locale: 'en-US',
+      type: 'article',
+    },
+  }
 }

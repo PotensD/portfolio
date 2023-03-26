@@ -4,8 +4,25 @@ import Header from './Header'
 import Footer from './Footer'
 
 export const metadata = {
-  title: 'Dinhdjj - Portfolio',
-  description: 'Dinhdjj - Portfolio',
+  title: {
+    default: 'PotensD',
+    template: '%s | PotensD',
+  },
+  description: 'Developer, writer, and creator.',
+  openGraph: {
+    title: 'PotensD',
+    description: 'Developer, writer, and creator.',
+    siteName: 'PotensD',
+    images: [
+      {
+        url: '/og.jpg',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: 'en-US',
+    type: 'website',
+  },
 }
 
 const beVietnamPro = Be_Vietnam_Pro({
