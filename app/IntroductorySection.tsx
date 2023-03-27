@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { TypeAnimation } from 'react-type-animation'
 import VerticalLinks from '~/components/VerticalLinks'
 import CircleArrow from '~/icons/CircleArrow'
 import LongArrow from '~/icons/LongArrow'
@@ -48,7 +49,12 @@ function LeftColumn() {
   return (
     <div className='col-span-12 space-y-3 lg:col-span-8'>
       <h1 className='text-center text-7xl font-bold text-slate-200 lg:text-left'>
-        Hi, I&apos;m <span className='text-sky-400'>Dinh</span>
+        Hi, I&apos;m&nbsp;
+        <TypeAnimation
+          className='text-sky-400'
+          sequence={['Dinh Le.', 1500, 'PotensD.', 2000]}
+          repeat={Infinity}
+        />
       </h1>
       <div className='flex flex-col items-center gap-4 px-5 pt-3 lg:flex-row lg:items-start'>
         <div>
