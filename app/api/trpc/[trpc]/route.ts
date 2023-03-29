@@ -1,6 +1,6 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 import example from '~/trpc/example'
-import { router } from './trpc'
+import { createTRPCContext, router } from './trpc'
 
 const appRouter = router({
   example,
@@ -11,7 +11,7 @@ const handler = async (req: Request) => {
     endpoint: '/api/trpc',
     router: appRouter,
     req,
-    createContext: () => ({}),
+    createContext: createTRPCContext,
     onError:
       process.env.NODE_ENV === 'development'
         ? ({ path, error }) => {

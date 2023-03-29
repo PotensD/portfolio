@@ -1,7 +1,19 @@
 import { initTRPC } from '@trpc/server'
+import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import SuperJSON from 'superjson'
 
-const t = initTRPC.create({
+type CreateContextOptions = FetchCreateContextFnOptions & {
+};
+
+export function createInnerTRPCContext(opts: CreateContextOptions){
+  return opts
+}
+
+export function createTRPCContext(opts: FetchCreateContextFnOptions){
+  return createInnerTRPCContext(opts);
+}
+
+const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: SuperJSON,
 })
 
