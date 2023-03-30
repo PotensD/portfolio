@@ -1,7 +1,7 @@
+import Tag from './Tag'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Post } from '~/.contentlayer/generated'
-import Tag from './Tag'
 
 type PostCardProps = {
 	className?: string

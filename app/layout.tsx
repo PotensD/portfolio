@@ -1,8 +1,8 @@
-import './globals.css'
-import { Be_Vietnam_Pro } from 'next/font/google'
-import Header from './Header'
 import Footer from './Footer'
+import Header from './Header'
+import './globals.css'
 import TrpcClientProvider from './trpc'
+import { Be_Vietnam_Pro } from 'next/font/google'
 
 export const metadata = {
 	title: {

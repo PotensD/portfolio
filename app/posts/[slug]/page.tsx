@@ -1,10 +1,10 @@
+import { format } from 'date-fns'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { format } from 'date-fns'
 import { allPosts } from '~/.contentlayer/generated'
-import Tag from '~/components/Tag'
 import Mdx from '~/components/Mdx'
-import { Metadata } from 'next'
+import Tag from '~/components/Tag'
 
 type PostDetailPageProps = {
 	params: {

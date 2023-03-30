@@ -1,6 +1,6 @@
+import { createTRPCContext, router } from './trpc'
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 import subscriber from '~/trpc/subscriber'
-import { createTRPCContext, router } from './trpc'
 
 const appRouter = router({
 	subscriber,

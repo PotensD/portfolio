@@ -1,11 +1,13 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
+// rome-ignore lint/suspicious/noExplicitAny: have no idea how to fix this
 function RoundedImage(props: any) {
 	return <Image alt={props.alt} className='rounded-lg' {...props} />
 }
 
+// rome-ignore lint/suspicious/noExplicitAny: have no idea how to fix this
 const CustomLink = (props: any) => {
 	const href = props.href
 
@@ -18,10 +20,14 @@ const CustomLink = (props: any) => {
 	}
 
 	if (href.startsWith('#')) {
-		return <a {...props} />
+		return <a {...props}>{props.children}</a>
 	}
 
-	return <a target='_blank' rel='noopener noreferrer' {...props} />
+	return (
+		<a target='_blank' rel='noopener noreferrer' {...props}>
+			{props.children}
+		</a>
+	)
 }
 
 const components = {

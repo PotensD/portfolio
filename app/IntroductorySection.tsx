@@ -78,17 +78,32 @@ function LeftColumn() {
 						</button>
 					</div>
 					<div className='flex flex-wrap items-start justify-center gap-x-32 gap-y-14 pt-10 lg:justify-start'>
-						<a href={links.TWITTER} target='_blank' className='mt-3.5'>
+						<a
+							href={links.TWITTER}
+							target='_blank'
+							className='mt-3.5'
+							rel="noreferrer"
+						>
 							<SquareTwitter
 								className={`h-7 w-auto text-slate-500 transition hover:scale-125 hover:text-slate-200 ${twitterClassName}`}
 							/>
 						</a>
-						<a href={links.GITHUB} target='_blank' className='mt-7'>
+						<a
+							href={links.GITHUB}
+							target='_blank'
+							className='mt-7'
+							rel="noreferrer"
+						>
 							<SquareGithub
 								className={` h-7 w-auto text-slate-500 transition hover:scale-125 hover:text-slate-200 ${githubClassName}`}
 							/>
 						</a>
-						<a href={links.EMAIL} target='_blank' className='-mt-[0.2rem]'>
+						<a
+							href={links.EMAIL}
+							target='_blank'
+							className='-mt-[0.2rem]'
+							rel="noreferrer"
+						>
 							<SolidEnvelope
 								className={`h-[2.25rem] w-auto text-slate-500 transition hover:scale-125 hover:text-slate-200 ${envelopeClassName}`}
 							/>

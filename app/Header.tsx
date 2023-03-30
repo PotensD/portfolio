@@ -31,7 +31,7 @@ export default function Header({ className }: { className?: string }) {
 
 				<ul className='flex flex-1 items-center justify-center gap-6 lg:justify-end '>
 					{menuItems.map((item, i) => (
-						<li key={i}>
+						<li key={item.name}>
 							<Link
 								href={item.href}
 								className={`${
