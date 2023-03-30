@@ -92,3 +92,5 @@ export function generateMetadata({
     },
   }
 }
+
+export const runtime = 'nodejs'
