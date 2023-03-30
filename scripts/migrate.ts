@@ -4,5 +4,5 @@ import path from 'path'
 import { db } from '~/db/db'
 
 migrate(db, {
-  migrationsFolder: path.resolve(__dirname, '../db/migrations'),
+	migrationsFolder: path.resolve(__dirname, '../db/migrations'),
 })

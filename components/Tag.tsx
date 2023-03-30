@@ -1,9 +1,9 @@
 export default function Tag({
-  tag,
-  className,
+	tag,
+	className,
 }: {
-  tag: string
-  className?: string
+	tag: string
+	className?: string
 }) {
-  return <span className={`text-sm  ${className}`}>{tag}</span>
+	return <span className={`text-sm  ${className}`}>{tag}</span>
 }
