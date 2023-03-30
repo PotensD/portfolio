@@ -1,16 +1,24 @@
 import { initTRPC } from '@trpc/server'
-import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
+import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import SuperJSON from 'superjson'
+import { db } from '~/db/db'
 
 type CreateContextOptions = FetchCreateContextFnOptions & {
-};
-
-export function createInnerTRPCContext(opts: CreateContextOptions){
-  return opts
+  readonlyDb: typeof db
 }
 
-export function createTRPCContext(opts: FetchCreateContextFnOptions){
-  return createInnerTRPCContext(opts);
+export function createInnerTRPCContext(opts: CreateContextOptions) {
+  return {
+    db: db,
+    ...opts,
+  }
+}
+
+export function createTRPCContext(opts: FetchCreateContextFnOptions) {
+  return createInnerTRPCContext({
+    readonlyDb: db,
+    ...opts,
+  })
 }
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
