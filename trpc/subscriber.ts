@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { eq } from 'drizzle-orm/expressions'
-import { publicProcedure, router } from '~/app/api/trpc/[trpc]/trpc'
+import { publicProcedure, router } from '~/pages/api/trpc/trpc'
 import { subscribers } from '~/db/schema/subscribers'
 import { TRPCError } from '@trpc/server'
 
