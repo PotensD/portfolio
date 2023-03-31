@@ -9,6 +9,7 @@
     "lint:next": "next lint",
     "lint": "rome check --apply-unsafe .",
     "format": "rome format --write .",
+		"ci": "rome ci .",
     "migration:generate": "drizzle-kit generate:mysql",
     "migration:run": "tsx scripts/migrate.ts"
   },
