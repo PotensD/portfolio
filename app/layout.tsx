@@ -2,6 +2,7 @@ import Footer from './Footer'
 import Header from './Header'
 import './globals.css'
 import TrpcClientProvider from './trpc'
+import { Analytics } from '@vercel/analytics/react'
 import { Be_Vietnam_Pro } from 'next/font/google'
 
 export const metadata = {
@@ -53,6 +54,8 @@ export default function RootLayout({
 						{children}
 						<Footer className='mt-48' />
 					</div>
+
+					<Analytics />
 				</body>
 			</html>
 		</TrpcClientProvider>
