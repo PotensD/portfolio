@@ -1,0 +1,121 @@
+---
+title: Deploy a Laravel demo project for free on the Internet
+publishedOn: 2023-04-15
+summary: In this tutorial, we will deploy a Laravel demo project to Railway with minimal effort and for free.
+thumbnail: /images/railway-og.png
+tags:
+  - Laravel
+---
+
+In this tutorial, we will deploy a Laravel demo project to [Railway](https://railway.app/) with minimal effort and cost (free).
+
+## What is the railway.app?
+
+[Railway](https://railway.app/) is an infrastructure platform where you can provision infrastructure, develop with that infrastructure locally, and then deploy it to the cloud.
+The best part is that use builder [Nixpacks](https://nixpacks.com/docs) under the hood to detach and deploy your project automatically.
+
+## Benefits of Railway over other platforms
+
+- **No credit card required** - Railway is free to use and you can deploy your project for free.
+- **No need to configure your project** - Railway will automatically detect your project and deploy it.
+- **No need to configure your infrastructure** - Railway will automatically provision the infrastructure for you.
+- **Free SSL** - Railway will automatically provision a free SSL certificate for you.
+- **Free domain** - Railway will automatically provision a free domain for you.
+- **Starter && Developer plans** - Everything is free if your monthly cost is less than $5.
+
+<Image
+	src="/images/railway-pricing.png"
+	alt="Railway pricing"
+	width={720}
+	height={480}
+/>
+
+
+## Drawbacks of Railway
+
+- **Not support well for PHP project** - But totally fine for a demo project (this post will demonstrate).
+- **US location only** - You can't deploy your project to other locations but will be supported soon.
+
+## Prerequisites
+
+- A Railway account
+- A Laravel project
+- A GitHub account & a GitHub repository for your project
+
+## First prepare for Railway
+
+1. **Create an empty project on Railway** - Just click the `New Project` button and select `Empty Project`
+2. **Create a database on Railway project** - Click the `New` button -> select the `Database` option -> select which one do you like. I recommend you use PostgreSQL for your project because it spend very little memory versus MySQL.
+
+## Secondly prepare config in your repository
+
+Please create the below files in your repository:
+
+```toml title="railway.toml"
+[build]
+builder = "nixpacks"
+nixpacksConfigPath = "nixpacks.toml"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+```
+
+- **builder** - Railway will use `Nixpacks` to build your project.
+- **healthcheckPath** - Railway will use this path to check if your project is running or not (2xx response is oke). You can remove this config if you don't want to use it.
+- [Docs](https://docs.railway.app/deploy/config-as-code) for more information
+
+
+As I said before Nixpacks doesn't support PHP projects well, so we need to create a `nixpacks.toml` file to make it well.
+
+```toml title="nixpacks.toml"
+[phases.build]
+cmds = [
+    "...",
+    "php artisan migrate:fresh --force",
+    "php artisan config:cache",
+    "php artisan cache:clear",
+    "php artisan event:cache",
+    "php artisan route:cache",
+    "php artisan view:cache",
+    "php artisan storage:link",
+]
+
+[start]
+cmd = "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+```
+
+By default, nixpacks will use nginx for start command but I had some issues with it related to permissions and used resources.
+So I decided to use `php artisan serve` instead (only for demo project). Read more about [Nixpacks](https://nixpacks.com/docs).
+
+By using `php artisan serve` I reduced 400MB memory usage to 100MB memory usage (TALL Project).
+
+```php title="app/Providers/AppServiceProvider.php"
+public function boot(): void
+{
+		if (\App::environment('production')) {
+				\URL::forceScheme('https');
+		}
+}
+```
+
+Because Railway will connect to your project via HTTP so we need to force HTTPS in our project to fix `url()` generate problem.
+
+## Finally deploy your project
+
+1. **Connect your GitHub repository to Railway** - Click the `New` button -> select `GitHub Repo` -> select your repository -> click the `Connect` button.
+3. **Setup domain** - Click the `Project` -> select `Settings` -> click the `Generate Domain` button.
+2. **Configure your Laravel environment** - Click the `Project` -> select `Variables` -> click the `Raw Editor` button -> copy `.env` file in your local machine -> paste it -> click the `Save` button (remember change database connection and app URL).
+
+## Conclusion
+
+That's it. You can now access your project via the domain that Railway generated for you.
+If you have any problems, please feel free to ask me through my email.
+
+
+
+
+
+
