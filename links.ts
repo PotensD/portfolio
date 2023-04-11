@@ -1,5 +1,5 @@
 export const links = {
-	TWITTER: 'https://twitter.com/PotensD',
-	GITHUB: 'https://github.com/PotensD',
-	EMAIL: 'mailto:me@PotensD.dev',
+	TWITTER: 'https://twitter.com/dileedotdev',
+	GITHUB: 'https://github.com/dileedotdev',
+	EMAIL: 'mailto:me@dilee.dev',
 } as const
