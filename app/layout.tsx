@@ -7,7 +7,7 @@ import { Be_Vietnam_Pro } from 'next/font/google'
 
 export const metadata = {
 	title: {
-		default: 'Dilee',
+		default: 'Dilee - Dileedotdev',
 		template: '%s | Dilee',
 	},
 	description: 'Developer, writer, and creator.',
