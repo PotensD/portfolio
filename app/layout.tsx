@@ -7,14 +7,14 @@ import { Be_Vietnam_Pro } from 'next/font/google'
 
 export const metadata = {
 	title: {
-		default: 'PotensD',
-		template: '%s | PotensD',
+		default: 'Dilee',
+		template: '%s | Dilee',
 	},
 	description: 'Developer, writer, and creator.',
 	openGraph: {
-		title: 'PotensD',
+		title: 'Dilee',
 		description: 'Developer, writer, and creator.',
-		siteName: 'PotensD',
+		siteName: 'Dilee',
 		images: [
 			{
 				url: '/og.jpg',

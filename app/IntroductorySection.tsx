@@ -52,7 +52,7 @@ function LeftColumn() {
 				Hi, I&apos;m&nbsp;
 				<TypeAnimation
 					className='text-sky-400'
-					sequence={['Dinh Le.', 1500, 'PotensD.', 2000]}
+					sequence={['Dinh Le.', 1500, 'Dilee.', 2000]}
 					repeat={Infinity}
 				/>
 			</h1>

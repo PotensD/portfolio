@@ -14,9 +14,9 @@ export const metadata = {
 	title: 'Posts',
 	description: 'A collection of my thoughts and ideas.',
 	openGraph: {
-		title: 'Posts | PotensD',
+		title: 'Posts | Dilee',
 		description: 'A collection of my thoughts and ideas.',
-		siteName: 'PotensD',
+		siteName: 'Dilee',
 		images: [
 			{
 				url: '/og.jpg',
