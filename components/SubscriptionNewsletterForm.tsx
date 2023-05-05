@@ -1,32 +1,22 @@
 'use client'
 
-import { useState } from 'react'
-import { trpc } from '~/app/trpc'
+import { useEffect, useState } from 'react'
+import { subscribe } from '~/actions/subscriber'
 import ArrowRight from '~/icons/ArrowRight'
+import { useZact } from 'zact/client'
 
 export default function SubscriptionNewsletterForm({
 	className,
 }: {
 	className?: string
 }) {
-	const {
-		status,
-		error,
-		mutate: subscribe,
-	} = trpc.subscriber.subscribe.useMutation()
+	const { mutate, error, data: success } = useZact(subscribe)
 	const [email, setEmail] = useState('')
 
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
-		subscribe(
-			{ email },
-			{
-				onSuccess() {
-					setEmail('')
-				},
-			},
-		)
+		mutate({ email })
 	}
 
 	return (
@@ -47,10 +37,10 @@ export default function SubscriptionNewsletterForm({
 					<ArrowRight className='h-6 w-auto' />
 				</button>
 			</form>
-			{status === 'error' && (
+			{error && (
 				<div className='mt-2 text-sm text-red-500'>{error.message}</div>
 			)}
-			{status === 'success' && (
+			{success && (
 				<div className='mt-2 text-sm text-green-500'>
 					{' '}
 					Thanks for subscribing!{' '}

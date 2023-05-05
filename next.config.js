@@ -6,6 +6,7 @@ const nextConfig = {
 		appDir: true,
 		typedRoutes: true,
 		runtime: 'edge',
+		serverActions: true,
 	},
 }
 
