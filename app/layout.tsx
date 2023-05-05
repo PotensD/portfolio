@@ -1,7 +1,6 @@
 import Footer from './Footer'
 import Header from './Header'
 import './globals.css'
-import TrpcClientProvider from './trpc'
 import { Analytics } from '@vercel/analytics/react'
 import { Be_Vietnam_Pro } from 'next/font/google'
 
@@ -42,7 +41,6 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<TrpcClientProvider>
 			<html lang='en' className={`${beVietnamPro.variable}`}>
 				<body
 					className={`${
@@ -58,6 +56,5 @@ export default function RootLayout({
 					<Analytics />
 				</body>
 			</html>
-		</TrpcClientProvider>
 	)
 }
