@@ -1,0 +1,107 @@
+---
+title: What is monorepo/turborepo and how we need to use it?
+publishedOn: 2023-07-01
+summary: In this post, I will explain what is monorepo/turborepo and how I use it in my projects.
+thumbnail: /images/5-percent-process.jpg
+tags:
+- Monorepo
+- Project Management
+---
+When I write this post, I am working on [ResolveX.ai](https://resolvex.ai) project. It is a project that
+helps small and medium-sized businesses to manage their customer support chats/emails/tickets on a single
+platform with power of AI.
+
+My first approach was to create a github organization and create multiple repositories for each service and
+example related to the project. But I realized that it is not a good approach for me. Because I need to utilize
+the same codebase in multiple services (ex: a simple function for simple components, ...). So I decided to
+change my approach to [monorepo](https://monorepo.tools/).
+
+## What is monorepo?
+
+Monorepo is a repository that contains multiple projects in same repository. It is a good approach for projects
+that have multiple services and need to share some code between them.
+
+<img
+	src="/images/monorepo.svg"
+	alt="Monorepo"
+	style={{width: 100 + '%'}}
+/>
+
+## How create a monorepo with npm/yarn/pnpm?
+
+With npm/yarn/pnpm workspace, you can create a very simple monorepo by create a `pnpm-workspace.yaml` file
+(in my case, I use [pnpm](https://pnpm.io/workspaces)) and add your projects to it.
+
+```yaml
+packages:
+  - "packages/*"
+  - "apps/*"
+```
+
+And your project structure will be like this:
+
+```
+apps/
+	docs/
+		package.json
+	web/
+		package.json
+packages/
+	ui/
+		package.json
+	config/
+		package.json
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+```
+
+The pnpm workspace simple manage all dependencies in single lock file only. and you can install local packages
+in your apps like a normal npm package.
+
+For example in my `docs` app:
+
+```json
+{
+	"dependencies": {
+		"@resolvex/ui": "workspace:^",
+	}
+}
+```
+
+That will tell pnpm to install `@resolvex/ui` package from workspace instead of npm registry. Now you have
+been resolved the reusability problem and have a simple monorepo.
+
+## Why I need to use turborepo for my monorepo?
+
+[Turborepo](https://turbo.build/repo) is a tool that helps you to manage your monorepo. It will help you simplify
+some tasks like: build, test, deploy, ...
+
+Without turborepo:
+
+```bash
+cd workspace/apps/docs
+pnpm run build
+cd ../web
+pnpm run build
+cd ../../packages/ui
+pnpm run build
+```
+
+With turborepo:
+
+```bash
+cd workspace
+pnpm run build
+```
+
+Oke but I also create a specific `build` script in root package.json. So why I need to use turborepo?
+Because turborepo will help you to run your scripts in parallel, and only run scripts when codebase in that
+package has been changed. So it will help you to save a lot of time.
+
+And many other features like: remote cache, environment variables, ...
+
+## Conclusion
+
+In this post, I explained what is monorepo/turborepo and how I use it in my projects. I hope you can find
+something useful in this post. If you have any question, please leave a comment below. Thank you for reading.
